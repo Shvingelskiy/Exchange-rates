@@ -15,3 +15,7 @@
 
 ![3](../Sequence/ShowBestExchangeRates.png)
 
+### Вывод цен на товары мировой биржи
+---
+
+![4](../Sequence/WorldExchange.png)
