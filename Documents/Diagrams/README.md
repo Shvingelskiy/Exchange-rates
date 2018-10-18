@@ -12,7 +12,7 @@
 
 ### 1. Диаграмма прецедентов<a name="1"></a>
 Диаграмма прецедентов представляет собой следующую диаграмму: 
-![Use Case](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Diagrams/UseCase/UseCaseDiagram.png)
+![Use Case](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/UseCase/UseCaseDiagram.png)
 <a name="1"/>
 
 # 1 Актёры
@@ -101,10 +101,10 @@
 8. Вариант использования завершается;
 
 ### 2. Диаграмма активности<a name="2"></a>
-Диаграммы активности: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Diagrams/Activity/README.md)).
+Диаграммы активности: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Activity/README.md)).
 
 ### 3. Диаграмма последовательности<a name="3"></a>
-Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Diagrams/Sequence/README.md)).
+Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Sequence/README.md)).
 
 
 
