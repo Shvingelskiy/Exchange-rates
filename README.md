@@ -4,4 +4,4 @@ Exchange rates is mobile application for searching profitable banks for currency
 
 ## Requirements: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Project%20Documentation/SRS.md)
 
-## UML Diagrams: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Diagrams/README.md)
+## UML Diagrams: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/README.md)
