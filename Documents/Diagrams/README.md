@@ -100,10 +100,10 @@
 7. Приложение выводит результат перевода валюты; 
 8. Вариант использования завершается;
 
-### 2. Диаграмма активности<a name="2"></a>
+### 2. Диаграммы активности<a name="2"></a>
 Диаграммы активности: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Activity/README.md)).
 
-### 3. Диаграмма последовательности<a name="3"></a>
+### 3. Диаграммы последовательности<a name="3"></a>
 Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Sequence/README.md)).
 
 
