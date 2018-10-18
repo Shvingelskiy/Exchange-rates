@@ -2,4 +2,4 @@
 ##### The current version of Exchange-rates - 0.01
 Exchange rates is mobile application for searching profitable banks for currency exchange and their сonvertetion.
 
-## Requirments: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Project%20Documentation/SRS.md)
+## Requirements: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Project%20Documentation/SRS.md)
