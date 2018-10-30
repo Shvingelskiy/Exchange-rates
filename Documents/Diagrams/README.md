@@ -9,6 +9,7 @@
 2. [Диаграмма активности](#2)
 3. [Диаграмма последовательности](#3)
 4. [Диаграмма классов](#4)
+5. [Диаграммы состояния](#5)
 
 
 ### 1. Диаграмма прецедентов<a name="1"></a>
@@ -109,6 +110,9 @@
 
 ### 4. Диаграмма классов<a name="4"></a>
 Диаграмма: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Class/README.md)).
+
+### 4. Диаграммы состояния<a name="5"></a>
+Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/State/README.md)).
 
 
 
