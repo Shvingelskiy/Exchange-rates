@@ -10,6 +10,7 @@
 3. [Диаграмма последовательности](#3)
 4. [Диаграмма классов](#4)
 5. [Диаграммы состояния](#5)
+6. [Диаграмма развертывания](#6)
 
 
 ### 1. Диаграмма прецедентов<a name="1"></a>
@@ -114,6 +115,7 @@
 ### 5. Диаграммы состояния<a name="5"></a>
 Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/State/README.md)).
 
-
+### 6. Диаграмма развертывания<a name="6"></a>
+Диаграмма: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Deployment/README.md)).
 
 
