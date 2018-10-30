@@ -8,6 +8,7 @@
 1.2.4 [Конвертер валют](#2.4) <br>
 2. [Диаграмма активности](#2)
 3. [Диаграмма последовательности](#3)
+4. [Диаграмма классов](#4)
 
 
 ### 1. Диаграмма прецедентов<a name="1"></a>
@@ -105,6 +106,9 @@
 
 ### 3. Диаграммы последовательности<a name="3"></a>
 Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Sequence/README.md)).
+
+### 4. Диаграмма классов<a name="4"></a>
+Диаграмма: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Class/README.md)).
 
 
 
