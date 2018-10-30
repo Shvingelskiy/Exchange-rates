@@ -111,7 +111,7 @@
 ### 4. Диаграмма классов<a name="4"></a>
 Диаграмма: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Class/README.md)).
 
-### 4. Диаграммы состояния<a name="5"></a>
+### 5. Диаграммы состояния<a name="5"></a>
 Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/State/README.md)).
 
 
