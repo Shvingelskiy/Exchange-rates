@@ -8,10 +8,10 @@
 1.2.4 [Конвертер валют](#2.4) <br>
 2. [Диаграмма активности](#2)
 3. [Диаграмма последовательности](#3)
-4. [Диаграмма классов](#4)
-5. [Диаграммы состояния](#5)
-6. [Диаграмма развертывания](#6)
-7. [Диаграмма компонентов](#7)
+4. [Диаграмма состояний](#4)
+5. [Диаграмма классов](#5)
+6. [Диаграмма компонентов](#6)
+7. [Диаграмма развертывания](#7)
 
 
 ### 1. Диаграмма прецедентов<a name="1"></a>
@@ -110,15 +110,18 @@
 ### 3. Диаграммы последовательности<a name="3"></a>
 Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Sequence/README.md)).
 
-### 4. Диаграмма классов<a name="4"></a>
-Диаграмма: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Class/README.md)).
 
-### 5. Диаграммы состояния<a name="5"></a>
+### 4. Диаграмма состояний<a name="4"></a>
 Все диаграммы: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/State/README.md)).
 
-### 6. Диаграмма развертывания<a name="6"></a>
-Диаграмма: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Deployment/README.md)).
+### 5. Диаграмма классов<a name="5"></a>
+Диаграмма классов представляет собой следующую диаграмму: 
+![1](../Class/class.png)
 
-### 7. Диаграмма компонентов<a name="7"></a>
-Диаграмма: ([Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/Diagrams/Component/README.md)).
+### 6. Диаграмма компонентов<a name="6"></a>
+![1](../Component/component.png)
+
+### 7. Диаграмма развертывания<a name="7"></a>
+![1](../Deployment/depDiagram.png)
+
 
