@@ -116,12 +116,12 @@
 
 ### 5. Диаграмма классов<a name="5"></a>
 Диаграмма классов представляет собой следующую диаграмму: 
-![1](../Class/class.png)
+![1](../Diagrams/Class/class.png)
 
 ### 6. Диаграмма компонентов<a name="6"></a>
-![1](../Component/component.png)
+![1](../Diagrams/Component/component.png)
 
 ### 7. Диаграмма развертывания<a name="7"></a>
-![1](../Deployment/depDiagram.png)
+![1](../Diagrams/Deployment/depDiagram.png)
 
 
