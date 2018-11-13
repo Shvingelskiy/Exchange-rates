@@ -9,9 +9,15 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,28 +44,32 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 
 import java.io.InputStreamReader;
+import java.sql.Struct;
 import java.util.ArrayList;
 
 import java.io.FileOutputStream;
+import java.util.List;
 
 
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     Intent intent;
-    private EditText RubID;
-    private EditText EurID;
-    private EditText UsdID;
-    private EditText PlnID;
-    private EditText UahID;
+    private TextView RubID;
+    private TextView EurID;
+    private TextView UsdID;
+    private TextView PlnID;
+    private TextView UahID;
     Button upData;
 
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
 
     String titleUsd;
     String titleEur;
     String titleRub;
     String titlePln;
     String titleUah;
+
 
     String titleTest1 = "Hello", titleTest2 = "World", titleTest3 = "!!!";
 
@@ -165,13 +175,16 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+
     public void initEditTexts() {
 
-        UsdID = (EditText)findViewById(R.id.UsdID);
-        RubID = (EditText)findViewById(R.id.rubID);
-        EurID = (EditText)findViewById(R.id.eurID);
-        UahID = (EditText)findViewById(R.id.UahID);
-        PlnID = (EditText)findViewById(R.id.PlnID);
+        UsdID = (TextView)findViewById(R.id.UsdID);
+        RubID = (TextView) findViewById(R.id.rubID);
+        EurID = (TextView)findViewById(R.id.eurID);
+        UahID = (TextView)findViewById(R.id.UahID);
+        PlnID = (TextView)findViewById(R.id.PlnID);
 
 
         upData = (Button) findViewById(R.id.UpData);
@@ -181,9 +194,9 @@ public class MainActivity extends AppCompatActivity {
 
         UsdID.setText("USD - " + titleUsd);
         EurID.setText("EUR - " + titleEur);
-        RubID.setText("RUB - " + titleRub);
-        UahID.setText("UAH - " + titleUah);
-        PlnID.setText("PLN - " + titlePln);
+        RubID.setText("100 RUB - " + titleRub);
+        UahID.setText("100 UAH - " + titleUah);
+        PlnID.setText("10 PLN - " + titlePln);
 
     }
 
@@ -268,14 +281,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-
-
         );
 
 
     }
 
     public boolean isConnected() {
+
         /*ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         if (netInfo != null && netInfo.isConnected()) {
@@ -296,15 +308,58 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //addListenerOnButton(); // вызываем метод, котор. будет отслеживать нажатие на клавишу
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         initEditTexts();
         readFile();
         outputExchangeRates();
         addListenerOnButton();
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+        switch (menuItem.getItemId()) {
+
+            // R.id.nav_search:
+                //Intent intentMain = new Intent(getApplicationContext(), MainActivity.class);
+                //startActivity(intentMain);
+                //break;
+
+            case R.id.nav_converter:
+                Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                startActivity(intent);
+                break;
 
 
+
+        }
+
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(mToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 
     public void readFile(){
@@ -318,6 +373,7 @@ public class MainActivity extends AppCompatActivity {
             StringBuffer strBuffer2 = new StringBuffer();
             StringBuffer strBuffer3 = new StringBuffer();
             String lines;
+
             /*while((lines = buffer.readLine()) != null){
                 strBuffer.append(lines + "\n");
             }*/
@@ -335,7 +391,16 @@ public class MainActivity extends AppCompatActivity {
             titleUsd = strBuffer.append(lines).toString();
             strBuffer.delete(0, strBuffer.length());
 
+            lines = buffer.readLine();
+            titleUah = strBuffer.append(lines).toString();
+            strBuffer.delete(0, strBuffer.length());
 
+            lines = buffer.readLine();
+            titlePln = strBuffer.append(lines).toString();
+            strBuffer.delete(0, strBuffer.length());
+
+
+            fileInput.close();
             Toast.makeText(MainActivity.this, strBuffer1.toString(),Toast.LENGTH_LONG).show();
 
 
@@ -350,25 +415,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
     public void writeFile(){
         try {
             file = openFileOutput("Rates.txt", MODE_PRIVATE);
 
 
-            //file.write((titleUsd + "\n").getBytes());
-            //file.write((titleEur + "\n").getBytes());
-            //file.write((titleRub + "\n").getBytes());
+            file.write((titleRub + "\n").getBytes());
+            file.write((titleEur + "\n").getBytes());
+            file.write((titleUsd + "\n").getBytes());
+            file.write((titleUah + "\n").getBytes());
+            file.write((titlePln + "\n").getBytes());
 
             // Для тестирования
-            file.write((titleTest1 + "\n").getBytes());
-            file.write((titleTest2 + "\n").getBytes());
-            file.write((titleTest3 + "\n").getBytes());
+            //file.write((titleTest1 + "\n").getBytes());
+            //file.write((titleTest2 + "\n").getBytes());
+            //file.write((titleTest3 + "\n").getBytes());
 
 
-            file.close();
+
             Toast.makeText(MainActivity.this, "Текст сохранен",Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -378,6 +442,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     /*public void addListenerOnButton () {

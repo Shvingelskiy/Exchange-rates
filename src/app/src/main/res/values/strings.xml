@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">MyFirstsApplication</string>
     <string name="title_activity_second">SecondActivity</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    
+    <string-array name="numbers">
+        <item>USD->BYN</item>
+        <item>EUR->BYN</item>
+        <item>RUB->BYN</item>
+        <item>BYN->USD</item>
+        <item>BYN->EUR</item>
+        <item>BYN->RUB</item>
+    </string-array>
+
 </resources>
