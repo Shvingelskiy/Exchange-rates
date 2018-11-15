@@ -5,38 +5,35 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.jsoup.nodes.Element;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import org.jsoup.nodes.Element;
-
-import java.io.InputStreamReader;
-
 import java.io.FileOutputStream;
-import java.net.SocketOption;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     Intent intent;
     private TextView RubID;
@@ -44,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView UsdID;
     private TextView PlnID;
     private TextView UahID;
-    Button upData;
+    private Button upData;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -60,30 +57,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     String titlePln;
     String titleUah;
 
-    String forToastTests;
-
-
-    String titleTest1 = "Hello", titleTest2 = "World", titleTest3 = "!!!";
-
-
-
     ArrayList listTestusd = new ArrayList<String>();
     ArrayList listTesteur = new ArrayList<String>();
     ArrayList listTestrub = new ArrayList<String>();
 
-
-
-
-
     FileOutputStream file;
     FileInputStream fileInput;
 
-
     class MyTask extends AsyncTask<Void, Void, Void> {
 
-        String title1;
         String stringUsd, stringEur, stringRub, stringPln, stringUah ;
-        Element row;
         FileOutputStream file;
 
         @Override
@@ -102,18 +85,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Element table = doc.select("table").first();
                 Elements rows = table.select("tr");
 
-
                 stringUah = rows.get(5).select("td").get(3).text();
                 stringUsd = rows.get(1).select("td").get(3).text();
                 stringEur = rows.get(2).select("td").get(3).text();
                 stringPln = rows.get(4).select("td").get(3).text();
                 stringRub = rows.get(3).select("td").get(3).text();
 
-
-
-
                 setExchangeRates(stringUsd, stringEur, stringRub, stringUah, stringPln);
-
 
                 Elements table2 = doc.select("tr.tr-tb > td.best");
                 Element value;
@@ -121,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String number;
                 String bank;
                 arrayList = new ArrayList<String>();
-
-
 
                 for (int i = 0;i<table2.size();i++){
                     Element lol = table2.get(i);
@@ -133,22 +109,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     bank = trBefore.text();
                     arrayList.add(bank);
                 }
-
             }
             return null;
         }
-
 
         @Override
         protected void onPostExecute(Void result){
             super.onPostExecute(result);
 
-
             outputExchangeRates();
-            writeFile();       // записываем обновленные курсы валют
-            //this.cancel(false); // ставим true, там читает isCancel
+            writeFile();
             splitArrayOfCurrencies();
-
         }
     }
 
@@ -164,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         double eurSale;
         double rubBuy;
         double rubSale;
-
 
         for(int i = 0; i < arrayList.size(); i+=2) {
 
@@ -189,14 +159,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 listRub.add(number);
                 listRub.add(bank);
             }
-
         }
 
         sortListAndWriteFile(listUsd, listTestusd,"BanksUsd.txt");
         sortListAndWriteFile(listEur, listTesteur,"BanksEur.txt");
         sortListAndWriteFile(listRub, listTestrub,"BanksRub.txt");
-
-
     }
 
     public void sortListAndWriteFile(ArrayList list, ArrayList sortList, String nameOfFile){
@@ -226,23 +193,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         try {
             file = openFileOutput(nameOfFile, MODE_PRIVATE);
 
-
             file.write((sortList.get(0) + "\n").getBytes());
             file.write((sortList.get(1) + "\n").getBytes());
             file.write((sortList.get(2) + "\n").getBytes());
             file.write((sortList.get(3) + "\n").getBytes());
-
-
-            Toast.makeText(MainActivity.this, "Данные в файл занесены!",Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
-
 
     public void initEditTexts() {
 
@@ -251,8 +211,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         EurID = (TextView)findViewById(R.id.eurID);
         UahID = (TextView)findViewById(R.id.UahID);
         PlnID = (TextView)findViewById(R.id.PlnID);
-
-
         upData = (Button) findViewById(R.id.UpData);
     }
 
@@ -263,7 +221,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         RubID.setText("100 RUB - " + titleRub);
         UahID.setText("100 UAH - " + titleUah);
         PlnID.setText("10 PLN - " + titlePln);
-
     }
 
     public void setExchangeRates(String stringUsd, String stringEur, String stringRub, String stringUah, String stringPln){
@@ -278,27 +235,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void addListenerOnButton() {
 
-        upData.setOnClickListener(                  // при нажатии
-                new View.OnClickListener() {      // создаем новый метод(переопределяем)
+        upData.setOnClickListener(
+                new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
 
                         if(isConnected()){
                             Toast.makeText(MainActivity.this, "Обновление курсов!",Toast.LENGTH_LONG).show();
                             MyTask mt = new MyTask();
                             mt.execute();
-                        }
-                        else {
+                        } else {
                             Toast.makeText(MainActivity.this, "Невозможно обновить! \n Нет подключения к интернету.",Toast.LENGTH_LONG).show();
                         }
-
                     }
                 }
-
         );
-
-
     }
 
     public boolean isConnected() {
@@ -307,9 +258,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
                 connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
             return true;
-        }
-        else
-            return false;
+        } else return false;
     }
 
     @Override
@@ -319,7 +268,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -327,7 +275,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
         initEditTexts();
         readFile();
@@ -349,11 +296,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent intent = new Intent(getApplicationContext(), CalculationActivity.class);
                 startActivity(intent);
                 break;
-
-
-
         }
-
         mDrawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
@@ -369,22 +312,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-
     public void readFile(){
         try {
             fileInput = openFileInput("Currencies.txt");
             InputStreamReader reader = new InputStreamReader(fileInput);
             BufferedReader buffer = new BufferedReader(reader);
-            //StringBuffer strBuffer = new StringBuffer();
+
             StringBuffer strBuffer = new StringBuffer();
-            StringBuffer strBuffer1 = new StringBuffer();
-            StringBuffer strBuffer2 = new StringBuffer();
-            StringBuffer strBuffer3 = new StringBuffer();
             String lines;
 
-            lines = buffer.readLine(); // считываем строку
-            titleRub = strBuffer.append(lines).toString(); // заносим в поле
-            strBuffer.delete(0, strBuffer.length()); // чистим буфер
+            lines = buffer.readLine();
+            titleRub = strBuffer.append(lines).toString();
+            strBuffer.delete(0, strBuffer.length());
 
             lines = buffer.readLine();
             titleEur = strBuffer.append(lines).toString();
@@ -402,11 +341,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             titlePln = strBuffer.append(lines).toString();
             strBuffer.delete(0, strBuffer.length());
 
-
             fileInput.close();
-            Toast.makeText(MainActivity.this, strBuffer1.toString(),Toast.LENGTH_LONG).show();
-
-
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -415,13 +350,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-
-
-
     public void writeFile(){
         try {
             file = openFileOutput("Currencies.txt", MODE_PRIVATE);
-
 
             file.write((titleRub + "\n").getBytes());
             file.write((titleEur + "\n").getBytes());
@@ -429,7 +360,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             file.write((titleUah + "\n").getBytes());
             file.write((titlePln + "\n").getBytes());
 
-            Toast.makeText(MainActivity.this, "Текст сохранен",Toast.LENGTH_LONG).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
