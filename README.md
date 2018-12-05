@@ -9,3 +9,7 @@ Exchange rates is mobile application for searching profitable banks for currency
 ## Code: [En](https://github.com/Shvingelskiy/Exchange-rates/blob/master/src/app/src/main/java/com/example/user/myfirstsapplication)
 
 ## Test Plan: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/TestPlan/TestPlan.md)
+
+## Test Result: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/TestResult/TestResult.md)
+
+
