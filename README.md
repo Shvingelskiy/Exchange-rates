@@ -10,6 +10,6 @@ Exchange rates is mobile application for searching profitable banks for currency
 
 ## Test Plan: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/TestPlan/TestPlan.md)
 
-## Test Result: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/TestResult/TestResult.md)
+## Test Result: [Ru](https://github.com/Shvingelskiy/Exchange-rates/blob/master/Documents/TestResult/TestResults.md)
 
 
